@@ -46,9 +46,7 @@ jobs:
       - uses: jdx/mise-action@v4
 
       - run: bun install --frozen-lockfile
-
-      - uses: pulumi/actions@v7
-        with:
-          command: up
-          stack-name: acme/website/production
-          work-dir: infra
+      - run: |
+          cd infra
+          pulumi stack select dev
+          pulumi up --yes
