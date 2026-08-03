@@ -1,0 +1,3 @@
+name: ublock-filters-infra
+runtime: bun
+description: Infrastructure for my application

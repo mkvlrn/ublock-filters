@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: jdx/mise-action@v4
+
+      - run: bun install --frozen-lockfile
+      - run: mise typecheck
+      - run: mise lint
+      - run: mise test-ci
+
+  deploy-railway:
+    needs: run-checks
+    runs-on: ubuntu-latest
+    container: ghcr.io/railwayapp/cli:latest
+    env:
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      SVC_ID: distinguished-enjoyment
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: jdx/mise-action@v4
+
+      - run: railway up --service=${{ env.SVC_ID }}
+
+  deploy-lambda:
+    needs: run-checks
+    runs-on: ubuntu-latest
+    env:
+      PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: jdx/mise-action@v4
+
+      - run: bun install --frozen-lockfile
+
+      - uses: pulumi/actions@v7
+        with:
+          command: up
+          stack-name: acme/website/production
+          work-dir: infra
