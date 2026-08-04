@@ -1,20 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "packageRules": [
-    {
-      "matchPackageNames": ["github:**"],
-      "groupName": "Toolchain (mise)"
-    },
-    {
-      "matchManagers": ["mise"],
-      "groupName": "Toolchain (mise)"
-    },
-    {
-      "matchManagers": ["bun"],
-      "groupName": "Dependencies (bun)"
-    }
-  ],
+  "extends": ["config:best-practices"],
   "customManagers": [
     {
       "customType": "regex",
