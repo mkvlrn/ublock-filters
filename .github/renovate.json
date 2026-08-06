@@ -1,6 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:best-practices"],
+  "ignorePresets": ["security:minimumReleaseAgeNpm"],
+  "packageRules": [
+    {
+      "matchPackageNames": ["^@mkvlrn"],
+      "minimumReleaseAge": null
+    }
+  ],
   "customManagers": [
     {
       "customType": "regex",
