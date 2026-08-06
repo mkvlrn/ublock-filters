@@ -9,7 +9,7 @@
         "hono": "4.12.33",
       },
       "devDependencies": {
-        "@mkvlrn/config": "npm:@jsr/mkvlrn__config@0.2.1",
+        "@mkvlrn/config": "npm:@jsr/mkvlrn__config@0.3.1",
         "@pulumi/aws": "7.40.0",
         "@pulumi/awsx": "3.8.0",
         "@types/bun": "1.3.14",
@@ -64,7 +64,7 @@
 
     "@logdna/tail-file": ["@logdna/tail-file@2.2.0", "", {}, "sha512-XGSsWDweP80Fks16lwkAUIr54ICyBs6PsI4mpfTLQaWgEJRtY9xEV+PeyDpJ+sJEGZxqINlpmAwe/6tS1pP8Ng=="],
 
-    "@mkvlrn/config": ["@jsr/mkvlrn__config@0.2.1", "https://npm.jsr.io/~/11/@jsr/mkvlrn__config/0.2.1.tgz", {}, "sha512-DeTblNivf9cWZhmrUEuuswFIl17rNbdu6zMRXnCiBj4HE05ydZNIESkkZyBGx9aqu2YdErScyYEappjR3uSkBw=="],
+    "@mkvlrn/config": ["@jsr/mkvlrn__config@0.3.1", "https://npm.jsr.io/~/11/@jsr/mkvlrn__config/0.3.1.tgz", {}, "sha512-G5K8meXpuDVhS6M6dWYMPiNt4AXU327ESW//hSuDWvlaJ9L7DAprGpJM0JvPEp6K95kuWyy1DOo0PnwHCQgMTA=="],
 
     "@mkvlrn/result": ["@jsr/mkvlrn__result@0.3.1", "https://npm.jsr.io/~/11/@jsr/mkvlrn__result/0.3.1.tgz", {}, "sha512-5sDMzKJDdDnZ3V58r3kJ4Q71H9Mm18Xvc4noMCRdUG2KJh/qxmr6viglyXc0Is4UvfAKvbQT4b6d53Mtf5kLpw=="],
 
