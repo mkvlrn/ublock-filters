@@ -21,7 +21,7 @@
     "typescript": "7.0.2"
   },
   "dependencies": {
-    "@mkvlrn/result": "npm:@jsr/mkvlrn__result@0.3.1",
+    "@mkvlrn/result": "npm:@jsr/mkvlrn__result@0.3.2",
     "hono": "4.12.33"
   }
 }
