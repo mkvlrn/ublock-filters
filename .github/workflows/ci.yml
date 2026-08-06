@@ -22,7 +22,10 @@ jobs:
       - run: mise test-ci
 
   deploy-railway:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: >
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      contains(github.event.head_commit.message, '[deploy]')
     needs: run-checks
     runs-on: ubuntu-latest
     env:
@@ -37,7 +40,10 @@ jobs:
       - run: railway up --service=${{ env.SVC_ID }}
 
   deploy-lambda:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: >
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      contains(github.event.head_commit.message, '[deploy]')
     needs: run-checks
     runs-on: ubuntu-latest
     env:
