@@ -1,7 +1,7 @@
 [install]
 exact = true
 minimumReleaseAge = 86400
-minimumReleaseAgeExcludes = ["@mkvlrn/*"]
+minimumReleaseAgeExcludes = ["@jsr/mkvlrn__app-error", "@jsr/mkvlrn__config", "@jsr/mkvlrn__result"]
 
 [test]
 coveragePathIgnorePatterns = ["tests/**", "infra/**"]
