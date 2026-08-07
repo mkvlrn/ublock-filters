@@ -16,7 +16,7 @@ jobs:
 
       - uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4
 
-      - run: bun install --frozen-lockfile
+      - run: bun install
       - run: mise typecheck
       - run: mise lint
       - run: mise test-ci
@@ -55,7 +55,7 @@ jobs:
 
       - uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4
 
-      - run: bun install --frozen-lockfile
+      - run: bun install
       - run: |
           cd infra
           pulumi stack select dev
