@@ -22,6 +22,6 @@
   },
   "dependencies": {
     "@mkvlrn/result": "npm:@jsr/mkvlrn__result@0.3.2",
-    "hono": "4.13.0"
+    "hono": "4.13.1"
   }
 }
