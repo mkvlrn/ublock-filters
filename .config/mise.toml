@@ -2,8 +2,8 @@
 biome = "2.5.11"
 bun = "1.4.0"
 cocogitto = "7.0.0"
-lefthook = "2.1.11"
-pulumi = "3.259.0"
+lefthook = "2.1.12"
+pulumi = "3.260.0"
 
 [hooks]
 postinstall = "lefthook install"
