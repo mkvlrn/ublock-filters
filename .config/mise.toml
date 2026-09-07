@@ -1,9 +1,9 @@
 [tools]
-biome = "2.5.11"
-bun = "1.4.0"
+biome = "2.5.12"
+bun = "1.4.2"
 cocogitto = "7.0.0"
 lefthook = "2.1.12"
-pulumi = "3.260.0"
+pulumi = "3.261.0"
 
 [hooks]
 postinstall = "lefthook install"
