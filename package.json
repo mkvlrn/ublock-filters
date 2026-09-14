@@ -14,7 +14,7 @@
     }
   },
   "devDependencies": {
-    "@mkvlrn/config": "0.5.1",
+    "@mkvlrn/config": "0.6.1",
     "@pulumi/aws": "7.46.0",
     "@pulumi/awsx": "3.9.0",
     "@types/bun": "1.4.2",

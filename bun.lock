@@ -9,7 +9,7 @@
         "hono": "4.13.7",
       },
       "devDependencies": {
-        "@mkvlrn/config": "0.5.1",
+        "@mkvlrn/config": "0.6.1",
         "@pulumi/aws": "7.46.0",
         "@pulumi/awsx": "3.9.0",
         "@types/bun": "1.4.2",
@@ -64,7 +64,7 @@
 
     "@logdna/tail-file": ["@logdna/tail-file@2.2.0", "", {}, "sha512-XGSsWDweP80Fks16lwkAUIr54ICyBs6PsI4mpfTLQaWgEJRtY9xEV+PeyDpJ+sJEGZxqINlpmAwe/6tS1pP8Ng=="],
 
-    "@mkvlrn/config": ["@mkvlrn/config@0.5.1", "", {}, "sha512-ltbSjkMxhRQB7p1IuOPmtJG+ZG4V+Y2LrP1vnMQBE1jlvBI3QMP52cUBf0RL0TIiPurC8xxoSeiAW4k7ArDS9w=="],
+    "@mkvlrn/config": ["@mkvlrn/config@0.6.1", "", {}, "sha512-GvtNfyE1wyeNkzP+QuQ5/zTVqzpVgm6BZ3xjoMlCFz/B7G+SouXwkxW+WeUdymVKYLGYAIfPEHcIAcfpiipNew=="],
 
     "@mkvlrn/result": ["@mkvlrn/result@0.3.5", "", {}, "sha512-VkWOUNdUgObjb+z00Pcd2BzIH+ygXzpvBOVMwoNGyz6ulSybSkkqrFiF8xP91u3Opmh20xGF7uGX0ix77NxfeA=="],
 
