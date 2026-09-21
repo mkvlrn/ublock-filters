@@ -3,7 +3,7 @@ FROM oven/bun:1.4.2-alpine@sha256:d888c0ae6c86d7866ff10c5aafdd9077b36aee6455b33d
 WORKDIR /var/task
 ENV PORT=3000
 
-COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:1.1.0@sha256:3a108c4ceee9e0346a61fc0fc7085017945c664be4eaa2925855b8dd2467227b /lambda-adapter /opt/extensions/lambda-adapter
+COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:1.1.0@sha256:17cfd08eff1dfea3f6a9a1e9c65fdac80aa4919b6085e746615530f43f57d2f1 /lambda-adapter /opt/extensions/lambda-adapter
 COPY package.json bun.lock* bunfig.toml ./
 RUN bun install --frozen-lockfile --ignore-scripts --production
 COPY . .
