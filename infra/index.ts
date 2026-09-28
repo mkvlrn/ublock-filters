@@ -17,6 +17,7 @@ const image = new awsx.ecr.Image("ublock-filters-lambda-image", {
 
 // 3. Create IAM role for Lambda
 const role = new aws.iam.Role("lambda-role", {
+  // biome-ignore lint/style/useNamingConvention: AWS IAM policy keys use PascalCase
   assumeRolePolicy: aws.iam.assumeRolePolicyForPrincipal({ Service: "lambda.amazonaws.com" }),
 });
 
