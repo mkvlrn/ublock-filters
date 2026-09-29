@@ -11,8 +11,5 @@
       "!**/*.d.ts"
     ]
   },
-  "extends": ["@mkvlrn/config/biome"],
-  "overrides": [
-    { "includes": ["**/*"], "linter": { "rules": { "correctness": { "noNodejsModules": "off" } } } }
-  ]
+  "extends": ["@mkvlrn/config/biome/backend"]
 }

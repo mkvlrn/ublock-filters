@@ -41,5 +41,4 @@ app.onError((err, c) => {
   );
 });
 
-// biome-ignore lint/style/noDefaultExport: hono app
 export default app;
