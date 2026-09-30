@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "@mkvlrn/result": "0.3.5",
-    "hono": "4.13.9"
+    "hono": "4.13.10"
   }
 }
