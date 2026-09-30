@@ -5,7 +5,11 @@
     "": {
       "name": "ublock-filters",
       "dependencies": {
+<<<<<<< HEAD
         "@mkvlrn/result": "0.4.2",
+=======
+        "@mkvlrn/result": "0.3.5",
+>>>>>>> origin/renovate/hono-4.x
         "hono": "4.13.10",
       },
       "devDependencies": {
