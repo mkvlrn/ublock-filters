@@ -22,7 +22,7 @@
     "@pulumi/awsx": "3.10.0",
     "@types/bun": "1.4.2",
     "lefthook": "2.1.14",
-    "pulumi": "3.265.0",
+    "pulumi": "3.266.0",
     "typescript": "7.0.2"
   },
   "dependencies": {
