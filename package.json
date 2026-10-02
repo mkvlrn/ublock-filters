@@ -21,8 +21,8 @@
     "@pulumi/aws": "7.48.0",
     "@pulumi/awsx": "3.10.0",
     "@types/bun": "1.4.2",
-    "lefthook": "2.1.14",
-    "pulumi": "3.266.0",
+    "lefthook": "2.1.15",
+    "pulumi": "3.265.0",
     "typescript": "7.0.2"
   },
   "dependencies": {
