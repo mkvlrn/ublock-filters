@@ -6,11 +6,11 @@
   "devEngines": {
     "runtime": {
       "name": "bun",
-      "version": "1.4.2"
+      "version": "1.4.3"
     },
     "packageManager": {
       "name": "bun",
-      "version": "1.4.2"
+      "version": "1.4.3"
     }
   },
   "devDependencies": {
