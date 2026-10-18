@@ -1,15 +1,12 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
 
 jobs:
-  run-checks:
+  checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -19,21 +16,3 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: mise run check
       - run: mise run test -- --ci
-
-  deploy-railway:
-    if: >
-      github.event_name == 'push' &&
-      github.ref == 'refs/heads/main' &&
-      contains(github.event.head_commit.message, '[deploy]')
-    needs: run-checks
-    runs-on: ubuntu-latest
-    env:
-      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      SVC_ID: distinguished-enjoyment
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-
-      - uses: jdx/mise-action@2d8d4cafcbd33be2ea37d2b6f5ad595363d1f1ca # v5
-
-      - run: mise use railway
-      - run: railway up --service=${{ env.SVC_ID }}
