@@ -1,4 +1,4 @@
-export const success = {
+const success = {
   expected: "firstline\nsecondline",
   response: (): Response =>
     new Response("firstline\nsecondline", {
@@ -7,7 +7,7 @@ export const success = {
     }),
 };
 
-export const failure = [
+const failure = [
   {
     error: "error sending request: something broke",
     resolve: false,
@@ -42,3 +42,5 @@ export const failure = [
     url: "https://someurl.com/valid",
   },
 ];
+
+export { failure, success };

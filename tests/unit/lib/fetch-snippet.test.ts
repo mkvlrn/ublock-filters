@@ -1,29 +1,27 @@
 import assert from "node:assert/strict";
 import { failure, success } from "$/fixtures/fetch-snippet.fixtures";
-import { afterEach, describe, expect, it, vi } from "vite-plus/test";
+import { describe, expect, it, vi } from "vite-plus/test";
 import { fetchSnippet } from "#/lib/fetch-snippet";
-
-afterEach(() => {
-  vi.restoreAllMocks();
-});
 
 vi.setConfig({
   testTimeout: 1000,
 });
 
-describe("success", () => {
+describe("valid response", () => {
   it("should return data", async () => {
+    expect.hasAssertions();
     vi.spyOn(globalThis, "fetch").mockResolvedValue(success.response());
 
     const result = await fetchSnippet("https://someurl.com/valid");
 
     assert(!result.isError);
-    expect(result.value).toEqual(success.expected);
+    expect(result.value).toStrictEqual(success.expected);
   });
 });
 
-describe("failure", () => {
+describe("error response", () => {
   it.each<(typeof failure)[number]>(failure)("should error -> $error", async (tc) => {
+    expect.hasAssertions();
     if (tc.resolve) {
       vi.spyOn(globalThis, "fetch").mockResolvedValue(tc.response);
     } else {
@@ -33,6 +31,6 @@ describe("failure", () => {
     const result = await fetchSnippet(tc.url);
 
     assert(result.isError);
-    expect(result.error.message).toEqual(tc.error);
+    expect(result.error.message).toStrictEqual(tc.error);
   });
 });

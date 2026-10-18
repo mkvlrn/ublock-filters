@@ -1,6 +1,6 @@
 import type { FilterMap } from "#/lib/parse-snippet";
 
-export const success: { input: string; expected: FilterMap } = {
+const success: { input: string; expected: FilterMap } = {
   expected: new Map([
     ["fixed", ["fixed1", "fixed2"]],
     ["masks", ["masks1(%s)", "masks2(%s)"]],
@@ -21,7 +21,9 @@ filters2
 ---filters:end---`,
 };
 
-export const failure: { input: string; error: string } = {
+const failure: { input: string; error: string } = {
   error: "input does not match the correct format",
   input: "invalid input",
 };
+
+export { failure, success };

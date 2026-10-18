@@ -7,8 +7,9 @@ vi.setConfig({
   testTimeout: 1000,
 });
 
-describe("success", () => {
+describe("valid input", () => {
   it("should parse input", () => {
+    expect.hasAssertions();
     const result = parseSnippet(success.input);
 
     assert(!result.isError);
@@ -16,11 +17,12 @@ describe("success", () => {
   });
 });
 
-describe("failure", () => {
+describe("invalid input", () => {
   it("should fail if input doesn't match regex", () => {
+    expect.hasAssertions();
     const result = parseSnippet(failure.input);
 
     assert(result.isError);
-    expect(result.error.message).toEqual(failure.error);
+    expect(result.error.message).toStrictEqual(failure.error);
   });
 });

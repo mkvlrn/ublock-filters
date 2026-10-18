@@ -6,10 +6,11 @@ vi.setConfig({
   testTimeout: 1000,
 });
 
-describe("success", () => {
+describe("valid data", () => {
   it("should assemble filters from valid data", () => {
+    expect.hasAssertions();
     const result = assemble(success.input);
 
-    expect(result).toEqual(success.expected);
+    expect(result).toStrictEqual(success.expected);
   });
 });
