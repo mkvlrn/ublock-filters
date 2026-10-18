@@ -7,10 +7,7 @@ import { parseSnippet } from "#/lib/parse-snippet";
 const BAD_REQUEST_STATUS = 400;
 const INTERNAL_SERVER_ERROR_STATUS = 500;
 
-const app = new Hono();
-
-app.get("/", async (c) => {
-  const source = c.req.query("data");
+async function buildFilters(source: string | undefined): Promise<string> {
   if (!source) {
     throw new HTTPException(BAD_REQUEST_STATUS, { message: "a data source is needed" });
   }
@@ -25,20 +22,20 @@ app.get("/", async (c) => {
     throw new HTTPException(BAD_REQUEST_STATUS, { message: dataMap.error.message });
   }
 
-  const filters = assemble(dataMap.value);
+  return assemble(dataMap.value);
+}
 
-  return c.text(filters);
-});
+const app = new Hono()
+  .get("/", async (context) => context.text(await buildFilters(context.req.query("data"))))
+  .onError((exception, context) => {
+    if (exception instanceof HTTPException) {
+      return context.json({ error: exception.message }, exception.status);
+    }
 
-app.onError((err, c) => {
-  if (err instanceof HTTPException) {
-    return c.json({ error: err.message }, err.status);
-  }
-
-  return c.json(
-    { error: `Internal Server Error: ${(err as Error).message}` },
-    INTERNAL_SERVER_ERROR_STATUS,
-  );
-});
+    return context.json(
+      { error: `Internal Server Error: ${exception.message}` },
+      INTERNAL_SERVER_ERROR_STATUS,
+    );
+  });
 
 export default app;

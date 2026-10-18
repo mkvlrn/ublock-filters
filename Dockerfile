@@ -1,10 +1,32 @@
-FROM oven/bun:1.4.3-alpine@sha256:629e17411f1f129dbec3af78d5af9c9f2a937435c80349437206c6b0b7422373
+# syntax=docker/dockerfile:1
+
+# build: installs mise, then the toolchain pinned in .config/mise.toml, and runs the `build` task
+FROM debian:trixie-slim@sha256:918311b7b6c4c6f68b232ba516584925f6c78ad82b6fd534b98979df6438e483 AS build
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends ca-certificates curl libatomic1 \
+  && rm -rf /var/lib/apt/lists/* \
+  && curl -fsSL https://mise.run | sh
+ENV PATH="/root/.local/bin:/root/.local/share/mise/shims:${PATH}"
+ENV MISE_YES=1
+ENV MISE_TRUSTED_CONFIG_PATHS=/app
 
 WORKDIR /app
+COPY .config/ ./.config/
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json ./
+RUN mise install
 
-COPY package.json tsconfig.json bun.lock bunfig.toml ./
-RUN bun install --frozen-lockfile --production --ignore-scripts
 COPY src/ ./src/
-USER bun
+RUN mise run build
 
-CMD ["bun", "src/main.ts"]
+# runtime: same Debian base as the build stage, so the glibc-linked executable runs as built
+FROM debian:trixie-slim@sha256:918311b7b6c4c6f68b232ba516584925f6c78ad82b6fd534b98979df6438e483 AS runtime
+
+RUN useradd --system --uid 10001 --no-create-home app
+
+WORKDIR /app
+COPY --from=build --chown=app:app /app/bin/ublock-filters ./ublock-filters
+
+USER app
+
+ENTRYPOINT ["./ublock-filters"]

@@ -1,11 +1,16 @@
-import { describe, expect, test } from "bun:test";
-import { assemble } from "#/lib/assemble";
 import { success } from "$/fixtures/assemble.fixtures";
+import { describe, expect, it, vi } from "vite-plus/test";
+import { assemble } from "#/lib/assemble";
 
-describe("success", () => {
-  test("should assemble filters from valid data", () => {
+vi.setConfig({
+  testTimeout: 1000,
+});
+
+describe("valid data", () => {
+  it("should assemble filters from valid data", () => {
+    expect.hasAssertions();
     const result = assemble(success.input);
 
-    expect(result).toEqual(success.expected);
+    expect(result).toStrictEqual(success.expected);
   });
 });

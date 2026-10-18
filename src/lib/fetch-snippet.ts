@@ -1,26 +1,55 @@
 import { URL } from "node:url";
-import { ResultAsync, type ResultAsync as ResultAsyncType } from "@mkvlrn/result";
+import {
+  Result,
+  ResultAsync,
+  type ResultAsync as ResultAsyncType,
+  type Result as ResultType,
+} from "@mkvlrn/result";
+
+function errorMessage(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return String(error);
+}
+
+async function sendRequest(url: string): Promise<ResultType<Response, Error>> {
+  try {
+    return Result.ok(await fetch(url));
+  } catch (error) {
+    return Result.err(new Error(`error sending request: ${errorMessage(error)}`));
+  }
+}
+
+function validateResponse(response: Response): ResultType<Response, Error> {
+  if (!response.ok) {
+    return Result.err(new Error("response not OK"));
+  }
+
+  if (!(response.headers.get("Content-Type") ?? "").includes("text/plain")) {
+    return Result.err(new Error("wrong content-type"));
+  }
+
+  return Result.ok(response);
+}
 
 export async function fetchSnippet(url: string): ResultAsyncType<string, Error> {
   if (!URL.canParse(url)) {
     return ResultAsync.err(new Error("invalid url"));
   }
 
-  let response: Response;
-  try {
-    response = await fetch(url);
-  } catch (error) {
-    return ResultAsync.err(new Error(`error sending request: ${(error as Error).message}`));
-  }
-  if (!response.ok) {
-    return ResultAsync.err(new Error("response not OK"));
+  const request = await sendRequest(url);
+  if (request.isError) {
+    return ResultAsync.err(request.error);
   }
 
-  if (!response.headers.get("Content-Type")?.includes("text/plain")) {
-    return ResultAsync.err(new Error("wrong content-type"));
+  const validated = validateResponse(request.value);
+  if (validated.isError) {
+    return ResultAsync.err(validated.error);
   }
 
-  const content = await response.text();
+  const content = await validated.value.text();
 
   return ResultAsync.ok(content);
 }
