@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#MISE description="Sync mise tools and Bun dependencies"
+#MISE description="Sync mise tools and pnpm dependencies"
 
 set -euo pipefail
 

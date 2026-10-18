@@ -10,13 +10,15 @@ export async function fetchSnippet(url: string): ResultAsyncType<string, Error> 
   try {
     response = await fetch(url);
   } catch (error) {
-    return ResultAsync.err(new Error(`error sending request: ${(error as Error).message}`));
+    return ResultAsync.err(
+      new Error(`error sending request: ${error instanceof Error ? error.message : String(error)}`),
+    );
   }
   if (!response.ok) {
     return ResultAsync.err(new Error("response not OK"));
   }
 
-  if (!response.headers.get("Content-Type")?.includes("text/plain")) {
+  if (!(response.headers.get("Content-Type") ?? "").includes("text/plain")) {
     return ResultAsync.err(new Error("wrong content-type"));
   }
 

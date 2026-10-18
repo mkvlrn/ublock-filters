@@ -16,10 +16,9 @@ jobs:
 
       - uses: jdx/mise-action@2d8d4cafcbd33be2ea37d2b6f5ad595363d1f1ca # v5
 
-      - run: bun install
-      - run: mise typecheck
-      - run: mise lint
-      - run: mise test-ci
+      - run: pnpm install --frozen-lockfile
+      - run: mise run check
+      - run: mise run test -- --ci
 
   deploy-railway:
     if: >
@@ -55,7 +54,7 @@ jobs:
 
       - uses: jdx/mise-action@2d8d4cafcbd33be2ea37d2b6f5ad595363d1f1ca # v5
 
-      - run: bun install
+      - run: pnpm install --frozen-lockfile
       - run: |
           cd infra
           pulumi stack select dev

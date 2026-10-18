@@ -3,4 +3,4 @@
 
 set -euo pipefail
 
-mise exec -- bun --watch src/main.ts
+mise exec -- node --watch src/main.ts

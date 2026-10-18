@@ -1,0 +1,12 @@
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@mkvlrn/app-error"
+  - "@mkvlrn/config"
+  - "@mkvlrn/result"
+saveExact: true
+pmOnFail: ignore
+allowBuilds:
+  lefthook: true
+  "@pulumi/docker-build": true
+  "@pulumi/docker": true
+  protobufjs: true

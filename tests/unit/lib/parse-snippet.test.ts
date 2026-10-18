@@ -1,10 +1,14 @@
-import { describe, expect, test } from "bun:test";
 import assert from "node:assert/strict";
-import { parseSnippet } from "#/lib/parse-snippet";
 import { failure, success } from "$/fixtures/parse-snippet.fixtures";
+import { describe, expect, it, vi } from "vite-plus/test";
+import { parseSnippet } from "#/lib/parse-snippet";
+
+vi.setConfig({
+  testTimeout: 1000,
+});
 
 describe("success", () => {
-  test("should parse input", () => {
+  it("should parse input", () => {
     const result = parseSnippet(success.input);
 
     assert(!result.isError);
@@ -13,7 +17,7 @@ describe("success", () => {
 });
 
 describe("failure", () => {
-  test("should fail if input doesn't match regex", () => {
+  it("should fail if input doesn't match regex", () => {
     const result = parseSnippet(failure.input);
 
     assert(result.isError);

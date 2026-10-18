@@ -35,10 +35,7 @@ app.onError((err, c) => {
     return c.json({ error: err.message }, err.status);
   }
 
-  return c.json(
-    { error: `Internal Server Error: ${(err as Error).message}` },
-    INTERNAL_SERVER_ERROR_STATUS,
-  );
+  return c.json({ error: `Internal Server Error: ${err.message}` }, INTERNAL_SERVER_ERROR_STATUS);
 });
 
 export default app;

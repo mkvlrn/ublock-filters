@@ -7,7 +7,7 @@ const SNIPPET_REGEX =
 const BOM = /^\uFEFF/;
 
 export function parseSnippet(snippet: string): ResultType<FilterMap, Error> {
-  const match = snippet.replace(BOM, "").replace(/\r\n/g, "\n").trim().match(SNIPPET_REGEX);
+  const match = SNIPPET_REGEX.exec(snippet.replace(BOM, "").replace(/\r\n/g, "\n").trim());
 
   if (!match) {
     return Result.err(new Error("input does not match the correct format"));

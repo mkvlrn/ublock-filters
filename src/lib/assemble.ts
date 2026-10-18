@@ -3,7 +3,7 @@ import type { FilterMap } from "#/lib/parse-snippet";
 export function assemble(data: FilterMap): string {
   let result = `!CRAP-BLOCKER
 
-${data.get("fixed")?.join("\n")}
+${(data.get("fixed") ?? []).join("\n")}
 
 `;
 

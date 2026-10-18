@@ -1,15 +1,19 @@
-import { afterEach, describe, expect, mock, spyOn, test } from "bun:test";
 import assert from "node:assert/strict";
-import { fetchSnippet } from "#/lib/fetch-snippet";
 import { failure, success } from "$/fixtures/fetch-snippet.fixtures";
+import { afterEach, describe, expect, it, vi } from "vite-plus/test";
+import { fetchSnippet } from "#/lib/fetch-snippet";
 
 afterEach(() => {
-  mock.restore();
+  vi.restoreAllMocks();
+});
+
+vi.setConfig({
+  testTimeout: 1000,
 });
 
 describe("success", () => {
-  test("should return data", async () => {
-    spyOn(globalThis, "fetch").mockResolvedValue(success.response());
+  it("should return data", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValue(success.response());
 
     const result = await fetchSnippet("https://someurl.com/valid");
 
@@ -19,11 +23,11 @@ describe("success", () => {
 });
 
 describe("failure", () => {
-  test.each<(typeof failure)[number]>(failure)("should error -> $error", async (tc) => {
+  it.each<(typeof failure)[number]>(failure)("should error -> $error", async (tc) => {
     if (tc.resolve) {
-      spyOn(globalThis, "fetch").mockResolvedValue(tc.response);
+      vi.spyOn(globalThis, "fetch").mockResolvedValue(tc.response);
     } else {
-      spyOn(globalThis, "fetch").mockRejectedValue(new Error("something broke"));
+      vi.spyOn(globalThis, "fetch").mockRejectedValue(new Error("something broke"));
     }
 
     const result = await fetchSnippet(tc.url);
