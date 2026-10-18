@@ -14,11 +14,8 @@
     "@commitlint/cli": "21.2.3",
     "@commitlint/config-conventional": "21.2.3",
     "@mkvlrn/config": "0.11.0",
-    "@pulumi/aws": "7.50.0",
-    "@pulumi/awsx": "3.11.0",
     "@types/node": "26.6.5",
     "lefthook": "2.2.2",
-    "pulumi": "3.268.0",
     "typescript": "7.0.2",
     "vite-plus": "1.3.0"
   },
