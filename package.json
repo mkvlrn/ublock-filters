@@ -7,13 +7,13 @@
     "#/*": "./src/*.ts"
   },
   "dependencies": {
-    "@mkvlrn/result": "0.4.2",
+    "@mkvlrn/result": "0.5.2",
     "hono": "4.13.13"
   },
   "devDependencies": {
     "@commitlint/cli": "21.2.3",
     "@commitlint/config-conventional": "21.2.3",
-    "@mkvlrn/config": "0.11.0",
+    "@mkvlrn/config": "0.11.3",
     "@types/node": "26.6.5",
     "lefthook": "2.2.2",
     "typescript": "7.0.2",
@@ -22,11 +22,11 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.11.2"
+      "version": "12.14.0"
     },
     "runtime": {
       "name": "node",
-      "version": "26.11.1"
+      "version": "26.12.0"
     }
   }
 }
