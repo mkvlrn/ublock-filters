@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@mkvlrn/result':
-        specifier: 0.4.2
-        version: 0.4.2
+        specifier: 0.5.2
+        version: 0.5.2
       hono:
         specifier: 4.13.13
         version: 4.13.13
@@ -22,8 +22,8 @@ importers:
         specifier: 21.2.3
         version: 21.2.3
       '@mkvlrn/config':
-        specifier: 0.11.0
-        version: 0.11.0
+        specifier: 0.11.3
+        version: 0.11.3
       '@types/node':
         specifier: 26.6.5
         version: 26.6.5
@@ -149,11 +149,11 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@mkvlrn/config@0.11.0':
-    resolution: {integrity: sha512-jdv7ZkQYaG+JWuB4jYkMcKEwp40EI/5yqtP2tgXTy/1A/ISmMpaafhjSI+2dOw1BFgDq3RZ69W9NJYLGPsCMVA==}
+  '@mkvlrn/config@0.11.3':
+    resolution: {integrity: sha512-O6xdeeFf62EpjhIAMwSTegyNldQAGiUId/1Qxrdpv7Ks0FBkwTbpIE/ta+SMvyp6qnuBmj4INAj4mBuzGMMdzg==}
 
-  '@mkvlrn/result@0.4.2':
-    resolution: {integrity: sha512-5qHbqmlw48q6rFmzW6MTuhSgSIY6ZcwfHtswECONSA8QdI2cX6/W2wbaZI/NExafoSOivE7Qb4tjt18yQobA7w==}
+  '@mkvlrn/result@0.5.2':
+    resolution: {integrity: sha512-9TnquQ+VOffeQDwEZUHH/ib0GoodZlHlWLzsDbo30EEFDs1sXTdZhRa5Fke7FOIJ7OL9fm4i+4U5z3RKBc3mdw==}
 
   '@opentelemetry/api@1.9.1':
     resolution: {integrity: sha512-gLyJlPHPZYdAk1JENA9LeHejZe1Ti77/pTeFm/nMXmQH/HFZlcS/O2XJB+L8fkbrNSqhdtlvjBVjxwUYanNH5Q==}
@@ -1556,9 +1556,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@mkvlrn/config@0.11.0': {}
+  '@mkvlrn/config@0.11.3': {}
 
-  '@mkvlrn/result@0.4.2': {}
+  '@mkvlrn/result@0.5.2': {}
 
   '@opentelemetry/api@1.9.1':
     optional: true
