@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
 
 # build: installs mise, then the toolchain pinned in .config/mise.toml, and runs the `build` task
-FROM debian:trixie-slim@sha256:918311b7b6c4c6f68b232ba516584925f6c78ad82b6fd534b98979df6438e483 AS build
+FROM debian:trixie-slim@sha256:4876fdea29cac1a33a3195f1eb1952feb1fca7dd6dd00be3e2f1879cf20d34d2 AS build
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends ca-certificates curl libatomic1 \
@@ -20,7 +20,7 @@ COPY src/ ./src/
 RUN mise run build
 
 # runtime: same Debian base as the build stage, so the glibc-linked executable runs as built
-FROM debian:trixie-slim@sha256:918311b7b6c4c6f68b232ba516584925f6c78ad82b6fd534b98979df6438e483 AS runtime
+FROM debian:trixie-slim@sha256:4876fdea29cac1a33a3195f1eb1952feb1fca7dd6dd00be3e2f1879cf20d34d2 AS runtime
 
 RUN useradd --system --uid 10001 --no-create-home app
 
